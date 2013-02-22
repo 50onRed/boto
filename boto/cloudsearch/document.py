@@ -180,10 +180,10 @@ class DocumentServiceConnection(object):
         sdf = self.get_sdf()
 
         if ': null' in sdf:
-            boto.log.error('null value in sdf detected.  This will probably raise '
+            boto.log.warning('null value in sdf detected.  This will probably raise '
                 '500 error.')
             index = sdf.index(': null')
-            boto.log.error(sdf[index - 100:index + 100])
+            boto.log.warning(sdf[index - 100:index + 100])
 
         url = "http://%s/2011-02-01/documents/batch" % (self.endpoint)
 
